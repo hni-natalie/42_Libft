@@ -6,7 +6,7 @@
 /*   By: hni-xuan <hni-xuan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 19:07:23 by hni-xuan          #+#    #+#             */
-/*   Updated: 2024/11/26 14:29:05 by hni-xuan         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:14:58 by hni-xuan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,22 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while ((*s1 != '\0' || *s2 != '\0') && n--)
 	{
-		if ((unsigned char *)s1 != (unsigned char *)s2)
-			return ((unsigned char *)s1 - (unsigned char *)s2);
+		if (*(unsigned char *)s1 != *(unsigned char *)s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
 		s1++;
 		s2++;
 	}
 	return (0);
 }
+
+/*
+return ((unsigned char *)s1 - (unsigned char *)s2);
+this compare the difference between the pointer address
+
+Correct approach:
+return (*(unsigned char *)s1 - *(unsigned char *)s2);
+Dereference s1 and s2 to get the character values they point to
+*/
 
 /* int main()
 {
